@@ -1,21 +1,18 @@
 # Advent23
 
-**TODO: Add description**
+Advent of Code 2023
 
-## Installation
+## Usage
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `advent23` to your list of dependencies in `mix.exs`:
+Each solution uses `Solution` so any puzzle solution is available by running the following in iex
 
 ```elixir
-def deps do
-  [
-    {:advent23, "~> 0.1.0"}
-  ]
-end
+DayXX.solve(:name_of_solution, "input_to_use")
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/advent23](https://hexdocs.pm/advent23).
+For example `Day01` defines both a `:first` and `:second` solution, to run the `:first` solution agains the `"inputs/01/example-1"` input the following can be used
 
+```elixir
+iex(1)> Day01.solve(:first, "example-1")
+142
+```

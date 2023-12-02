@@ -1,4 +1,4 @@
-defmodule Advent23.Parse do
+defmodule Parse do
   @moduledoc """
   Helpers for working with puzzle input
   """
