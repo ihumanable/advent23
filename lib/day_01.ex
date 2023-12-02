@@ -4,49 +4,27 @@ defmodule Day01 do
   @type digit :: 0..9
   @type calibration_value :: 0..99
 
-  @digit_numerals %{
-    "1" => 1,
-    "2" => 2,
-    "3" => 3,
-    "4" => 4,
-    "5" => 5,
-    "6" => 6,
-    "7" => 7,
-    "8" => 8,
-    "9" => 9,
-  }
-
-  @digit_words %{
-    "one" => 1,
-    "two" => 2,
-    "three" => 3,
-    "four" => 4,
-    "five" => 5,
-    "six" => 6,
-    "seven" => 7,
-    "eight" => 8,
-    "nine" => 9,
-  }
-
-  @digits Map.merge(@digit_numerals, @digit_words)
-
   def solution(:first, input) do
-    input
-    |> Parse.lines()
-    |> Enum.map(&extract_digits(&1, @digit_numerals))
-    |> Enum.map(&calibration_value/1)
-    |> Enum.sum()
+    digits = Mapping.numeral_to_digit()
+
+    do_solve(input, digits)
   end
 
   def solution(:second, input) do
-    input
-    |> Parse.lines()
-    |> Enum.map(&extract_digits(&1, @digits))
-    |> Enum.map(&calibration_value/1)
-    |> Enum.sum()
+    digits = Map.merge(Mapping.numeral_to_digit(), Mapping.word_to_digit())
+
+    do_solve(input, digits)
   end
 
   ## Private
+
+  defp do_solve(input, digits) do
+    input
+    |> Parse.lines()
+    |> Stream.map(&extract_digits(&1, digits))
+    |> Stream.map(&calibration_value/1)
+    |> Enum.sum()
+  end
 
   @spec calibration_value(digits :: [digit()]) :: calibration_value()
   defp calibration_value(digits) do
