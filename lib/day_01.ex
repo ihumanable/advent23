@@ -18,6 +18,7 @@ defmodule Day01 do
 
   ## Private
 
+  @spec do_solve(input :: String.t(), digits :: %{String.t() => digit()}) :: non_neg_integer()
   defp do_solve(input, digits) do
     input
     |> Parse.lines()
