@@ -20,6 +20,18 @@ defmodule Parse do
   end
 
   @doc """
+  Breaks a string into parts by delimiter
+
+  Each part will be trimmed
+  """
+  @spec parts(string :: String.t(), delimiter :: String.pattern() | Regex.t()) :: [String.t()]
+  def parts(string, delimiter) do
+    string
+    |> String.split(delimiter, trim: true)
+    |> Enum.map(&String.trim/1)
+  end
+
+  @doc """
   Converts each string to an integer
 
   This function uses `as_integer/2` for conversion discarding any `:error`
